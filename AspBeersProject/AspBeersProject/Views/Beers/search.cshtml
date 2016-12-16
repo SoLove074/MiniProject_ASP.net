@@ -1,0 +1,56 @@
+﻿@model IEnumerable<AspBeersProject.Beer>
+
+@{
+    ViewBag.Title = "BEERS";
+}
+
+<h2>Search</h2>
+
+
+<p>
+    @using (Html.BeginForm("search", "Beers", FormMethod.Get))
+            {
+    <p>
+        Beer Name: @Html.TextBox("SearchName")
+        Type: @Html.DropDownList("SearchType", "All")
+        Location: @Html.DropDownList("SearchLo", "All")
+        <br />
+        <input type="submit" value="Search" />
+    </p>
+    }
+
+    </p>
+
+    <table border="1" cellpadding="0" cellspacing="3">
+        <tr bgcolor="8ccff0" align="center">
+            <td>&nbsp&nbsp&nbspBeerNAME&nbsp&nbsp&nbsp</td>
+            <td>&nbsp&nbsp&nbspType&nbsp&nbsp&nbsp</td>
+            <td>&nbsp&nbsp&nbspPrice&nbsp&nbsp&nbsp</td>
+            <td>&nbsp&nbsp&nbspAlcohol&nbsp&nbsp&nbsp</td>
+            <td>&nbsp&nbsp&nbspLocation&nbsp&nbsp&nbsp</td>
+            <td>&nbsp&nbsp&nbspPicture&nbsp&nbsp&nbsp</td>
+        </tr>
+        @foreach (Beer item in @Model)
+        {
+            <tr>
+
+                <td align="center">@item.Name</td>
+                <td align="center">@item.Type</td>
+                <td align="center">@item.Price</td>
+                <td align="center">@item.Alcohol</td>
+                <td align="center">@item.Location</td>
+                <td align="center"><img src="@Url.Content(item.Image)" height="150" width="150" /></td>
+                <td align="center">@Html.ActionLink("DETAIL", @item.Name)</td>
+
+            </tr>
+        }
+    </table>
+
+<style>
+    body {
+        background-image: url("paper.gif");
+        background-color: #cccccc;
+    }
+</style>
+
+

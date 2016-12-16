@@ -1,0 +1,27 @@
+﻿@model IEnumerable<AspBeersProject.Beer>
+
+@{
+    ViewBag.Title = "BEERS";
+}
+
+<h1><center>REVIEW BEERS TOP 50 IN THE WORLD</center></h1>
+
+
+
+<table border="1" cellpadding="1" cellspacing="3">
+
+    @foreach (Beer item in @Model)
+    {
+        <tr>
+            <td align="center">@item.Name</td>
+            <td><img src="@Url.Content(item.Image)" height="150" width="150" /></td>
+
+        </tr>
+    }
+</table>
+<style>
+    body {
+      //  background-image: url("paper.gif");
+        background-color: #cccccc;
+    }
+</style>
